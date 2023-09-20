@@ -1,11 +1,11 @@
 function emptyDesk (shipName, deskName) {
   const files = [
     {
-      path: 'desk',
+      path: `apps/${deskName}/desk`,
       name: "sys.kelvin",
       content: `[%zuse 414]`
     }, {
-      path: 'desk',
+      path: `apps/${deskName}/desk`,
       name: "desk.docket-0",
       content: `:~
   title+'${deskName}'
@@ -18,12 +18,12 @@ function emptyDesk (shipName, deskName) {
   glob-ames+[~${shipName} 0v0]
 ==`
     }, {
-      path: 'desk',
+      path: `apps/${deskName}/desk`,
       name: "desk.bill",
       content: `:~  %${deskName}
 ==`
     }, {
-      path: 'desk/app',
+      path: `apps/${deskName}/desk/app`,
       name: `${deskName}.hoon`,
       content: `
     /+  default-agent, dbug
@@ -47,7 +47,19 @@ function emptyDesk (shipName, deskName) {
 ++  on-agent  on-agent:def
 ++  on-arvo   on-arvo:def
 ++  on-fail   on-fail:def
---`}
+--`
+    }, {
+      path: 'ships',
+      name: 'ships.json',
+      content: JSON.stringify({
+        ships: [
+          {
+            pier: shipName,
+            desks: [ `${deskName}`]
+          }
+        ]
+      }, null, 2)
+    }
   ]
   return { files }
 }

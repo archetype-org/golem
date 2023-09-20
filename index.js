@@ -1,22 +1,26 @@
 const { program } = require('commander')
-const { sail } = require('./commands/sail')
-const { start } = require('./commands/start')
+const { create } = require('./commands/create')
+const { shell } = require('./commands/shell')
+const { build } = require('./commands/build')
 
 program
   .name('scrivener')
   .description('generate urbit projects and test environments')
   .version('0.0.1')
 
-program.command('sail')
-  .description('create a test ship')
-  .argument('<shipname>', 'pier name; best practice to use a string that casts to @p (omit the ~)')
-  .action(sail)
-
-program.command('start')
-  .description('create an urbit project')
+program.command('new')
+  .description('create a new urbit project')
   .argument('<desk>', 'the application name — used for the desk as well as the first agent')
   .argument('[template]', 'the template to use: (empty | crud | tomedb', 'empty')
-  .action(start)
+  .action(create)
+
+program.command('shell')
+  .description('open dojo for your current project')
+  .action(shell)
+
+program.command('build')
+  .description('run the current urbit project in it\'s test environment')
+  .action(build)
 
 program.parse()
 
