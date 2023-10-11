@@ -1,10 +1,14 @@
 const { fileExists, createFile, createPath} = require("../lib/files");
 const { installCoreDependencies } = require('../lib/urbit')
 const { emptyDesk } = require('../templates/empty-desk')
-async function create (deskName, template) {
+const { crudDesk } = require('../templates/crud-desk')
+async function create (deskName, template, { skipDeps }) {
+  console.log(`create: creating urbit project`)
+  console.log(`create: using template — ${template}`)
   // todo: import dynamically from folder
   const templates = {
     "empty": emptyDesk,
+    "crud": crudDesk,
   }
   // app always distributed through fake ~zod, by convention
   const { files } = templates[template]('zod', deskName)
@@ -12,10 +16,12 @@ async function create (deskName, template) {
     file.path = file.path.replace('./', '')
     if (!(await fileExists(file))) await createFile(`./${deskName}/${file.path}/${file.name}`, file.content.trimStart())
   }
-  // todo: download code dependancues (incl. base, garden etc)
-  const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
-  await createPath(depsPath)
-  await installCoreDependencies(depsPath)
+  // download code dependancues (incl. base, garden etc)
+    const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
+    await createPath(depsPath)
+  if (!skipDeps) {
+    await installCoreDependencies(depsPath)    
+  }
 }
 
 module.exports = {

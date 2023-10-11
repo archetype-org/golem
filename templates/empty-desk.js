@@ -3,7 +3,7 @@ function emptyDesk (shipName, deskName) {
     {
       path: `apps/${deskName}/desk`,
       name: "sys.kelvin",
-      content: `[%zuse 414]`
+      content: `[%zuse 412]`
     }, {
       path: `apps/${deskName}/desk`,
       name: "desk.docket-0",

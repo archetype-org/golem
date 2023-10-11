@@ -12,6 +12,7 @@ program.command('new')
   .description('create a new urbit project')
   .argument('<desk>', 'the application name — used for the desk as well as the first agent')
   .argument('[template]', 'the template to use: (empty | crud | tomedb', 'empty')
+  .option('--skip-deps', 'skip downloading base and garden')
   .action(create)
 
 program.command('shell')
