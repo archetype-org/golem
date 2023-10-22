@@ -229,7 +229,15 @@ function sailFiles (shipName, deskName) {
     \\\`this
   ==
 ++  on-leave  on-leave:def
-++  on-peek   on-peek:def
+++  on-peek
+  |=  =path
+  ^-  (unit (unit cage))
+  ?+    path  (on-peek:def path)
+      [%x %items ~]
+    \\\`\\\`noun+!>(items)
+  :: todo: add example for 'retrive one'
+  ::
+  ==
 ++  on-agent  on-agent:def
 ++  on-arvo
   :: TODO: move to lib
