@@ -5,10 +5,12 @@ function itemFiles (shipName, deskName) {
       name: `action.hoon`,
       content: `
 /-  item
+/+  *item
 |_  =action:item
 ++  grab
   |%
   ++  noun  action:item
+  ++  json  decode-item-action
   --
 ++  grow
   |%
@@ -110,7 +112,7 @@ function itemFiles (shipName, deskName) {
 ++  grad  %noun
 --
 `
-    }, 
+    },
   ]
   return files
 }
