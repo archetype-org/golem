@@ -234,7 +234,7 @@ function sailFiles (shipName, deskName) {
   ^-  (unit (unit cage))
   ?+    path  (on-peek:def path)
       [%x %items ~]
-    \\\`\\\`noun+!>(items)
+    \\\`\\\`items+!>(items)
   :: todo: add example for 'retrive one'
   ::
   ==
