@@ -107,11 +107,12 @@ function sailFiles (shipName, deskName) {
     ^-  (quip card _state)
     ?-    -.action
         %create
-      ?:  (~(has by items) now.bowl)
-        \\\$(now.bowl (add now.bowl ~s0..0001))
-      :_  state(items (~(put by items) now.bowl [name.action]))
+      =/  id  (mod now.bowl (pow 10 10))
+      ?:  (~(has by items) id)
+        \\\$(now.bowl (add id 1))
+      :_  state(items (~(put by items) id [name.action]))
       :~  :*  %give  %fact  ~[/updates]  %item-update
-              !>(\\\`update:item\\\`[%create now.bowl name.action])
+              !>(\\\`update:item\\\`[%create id name.action])
           ==
       ==
     ::
