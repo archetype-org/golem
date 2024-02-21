@@ -3,7 +3,7 @@
   "bin": {
     "golem": "./index.js"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Project creation and package management CLI for Urbit",
   "main": "index.js",
   "scripts": {

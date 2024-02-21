@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { program } = require('commander')
 const { create } = require('./commands/create')
 const { shell } = require('./commands/shell')
