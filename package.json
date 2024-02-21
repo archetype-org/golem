@@ -1,5 +1,8 @@
 {
   "name": "@archetype-org/golem",
+  "bin": {
+    "golem": "./index.js"
+  },
   "version": "1.0.0",
   "description": "Project creation and package management CLI for Urbit",
   "main": "index.js",
