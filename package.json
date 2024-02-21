@@ -1,14 +1,15 @@
 {
-  "name": "scrivener",
+  "name": "@archetype-org/golem",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project creation and package management CLI for Urbit",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "hastyp-patmud",
   "license": "ISC",
   "dependencies": {
+    "@archetype-org/clack": "^0.1.2",
     "commander": "^11.0.0",
     "exec-sh": "^0.4.0"
   }
