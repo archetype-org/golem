@@ -1,3 +1,4 @@
+import { python } from 'pythonia'
 import { fileExists, createFile, createPath } from "../lib/files.js"
 import { installCoreDependencies } from '../lib/urbit.js'
 import { emptyDesk } from '../templates/empty-desk.js'
@@ -20,11 +21,12 @@ async function create (deskName, template, { skipDeps }) {
     if (!(await fileExists(file))) await createFile(`./${deskName}/${file.path}/${file.name}`, file.content.trimStart())
   }
   // download code dependancues (incl. base, garden etc)
-    const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
-    await createPath(depsPath)
+  const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
+  await createPath(depsPath)
   if (!skipDeps) {
     await installCoreDependencies(depsPath)
   }
+  python.exit()
 }
 
 export {

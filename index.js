@@ -22,9 +22,10 @@ program.command('shell')
   .action(shell)
 
 program.command('build')
-  .description('run the current urbit project in it\'s test environment')
+  .description('build the current urbit project to it\'s test environment')
   .action(build)
 
 program.parse()
+
 
 
