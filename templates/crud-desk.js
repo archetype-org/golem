@@ -1,7 +1,7 @@
-const { cruft } = require('../partials/cruft')
-const { crudAgent } = require('../partials/crud-agent')
-const { itemFiles } = require('../partials/item-files')
-const { reactFiles } = require('../partials/react-files')
+import { cruft } from '../partials/cruft.js'
+import { crudAgent } from '../partials/crud-agent.js'
+import { itemFiles } from '../partials/item-files.js'
+import { reactFiles } from '../partials/react-files.js'
 
 function crudDesk (shipName, deskName) {
   const files = [
@@ -13,6 +13,6 @@ function crudDesk (shipName, deskName) {
   return { files }
 }
 
-module.exports = {
+export {
   crudDesk,
 }

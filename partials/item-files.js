@@ -117,6 +117,6 @@ function itemFiles (shipName, deskName) {
   return files
 }
 
-module.exports = {
+export {
   itemFiles,
 }

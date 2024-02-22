@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const { program } = require('commander')
-const { create } = require('./commands/create')
-const { shell } = require('./commands/shell')
-const { build } = require('./commands/build')
+import { program } from 'commander'
+import { create }  from './commands/create.js'
+import { shell } from './commands/shell.js'
+import { build } from './commands/build.js'
 
 program
-  .name('scrivener')
+  .name('golem')
   .description('generate urbit projects and test environments')
   .version('0.0.1')
 

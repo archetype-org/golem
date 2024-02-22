@@ -262,6 +262,6 @@ function sailFiles (shipName, deskName) {
   return files
 }
 
-module.exports = {
+export {
   sailFiles,
 }

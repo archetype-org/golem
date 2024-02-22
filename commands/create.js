@@ -1,8 +1,9 @@
-const { fileExists, createFile, createPath} = require("../lib/files");
-const { installCoreDependencies } = require('../lib/urbit')
-const { emptyDesk } = require('../templates/empty-desk')
-const { crudDesk } = require('../templates/crud-desk')
-const { sailDesk } = require('../templates/sail-desk')
+import { fileExists, createFile, createPath } from "../lib/files.js"
+import { installCoreDependencies } from '../lib/urbit.js'
+import { emptyDesk } from '../templates/empty-desk.js'
+import { crudDesk } from '../templates/crud-desk.js'
+import { sailDesk } from '../templates/sail-desk.js'
+
 async function create (deskName, template, { skipDeps }) {
   console.log(`create: creating urbit project`)
   console.log(`create: using template — ${template}`)
@@ -26,6 +27,6 @@ async function create (deskName, template, { skipDeps }) {
   }
 }
 
-module.exports = {
+export {
   create,
 }

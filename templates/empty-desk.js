@@ -1,4 +1,5 @@
-const { cruft } = require('../partials/cruft')
+import { cruft } from '../partials/cruft.js'
+
 function emptyDesk (shipName, deskName) {
   const files = [
     ...cruft(shipName, deskName),
@@ -33,6 +34,6 @@ function emptyDesk (shipName, deskName) {
   return { files }
 }
 
-module.exports = {
+export {
   emptyDesk,
 }

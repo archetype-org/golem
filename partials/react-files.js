@@ -327,6 +327,6 @@ fill="#000000" stroke="none">
   return files
 }
 
-module.exports = {
+export {
   reactFiles,
 }

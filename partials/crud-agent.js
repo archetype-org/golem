@@ -106,6 +106,6 @@ function crudAgent (shipName, deskName) {
   return files
 }
 
-module.exports = {
+export {
   crudAgent,
 }

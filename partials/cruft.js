@@ -38,6 +38,6 @@ function cruft (shipName, deskName) {
   return files
 }
 
-module.exports = {
+export {
   cruft,
 }

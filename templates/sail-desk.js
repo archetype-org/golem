@@ -1,7 +1,7 @@
-const { cruft } = require('../partials/cruft')
-const { sailFiles } = require('../partials/sail-files')
-const { itemFiles } = require('../partials/item-files')
-const { reactFiles } = require("../partials/react-files")
+import { cruft } from '../partials/cruft.js'
+import { sailFiles } from '../partials/sail-files.js'
+import { itemFiles } from '../partials/item-files.js'
+import { reactFiles } from "../partials/react-files.js"
 
 function sailDesk (shipName, deskName) {
   const files = [
@@ -13,6 +13,6 @@ function sailDesk (shipName, deskName) {
   return { files }
 }
 
-module.exports = {
+export {
   sailDesk,
 }

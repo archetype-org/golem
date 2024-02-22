@@ -1,8 +1,9 @@
-const fs = require('fs')
-const { isInScrivenerProject, isUrbitInstalled, isShipCreated } = require("../lib/checks");
+import fs from 'fs'
+import { isInGolemProject, isUrbitInstalled, isShipCreated } from "../lib/checks.js"
+
 async function shell () {
   try {
-    await isInScrivenerProject()
+    await isInGolemProject()
     await isUrbitInstalled()
 
     const { ships } = JSON.parse(fs.readFileSync('./ships/ships.json'))
@@ -15,6 +16,6 @@ async function shell () {
   }
 }
 
-module.exports = {
+export {
   shell,
 }
