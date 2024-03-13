@@ -4,11 +4,16 @@ import { program } from 'commander'
 import { create }  from './commands/create.js'
 import { shell } from './commands/shell.js'
 import { build } from './commands/build.js'
+import { publish } from './commands/publish.js'
+import { install } from './commands/install.js'
+import { uninstall } from './commands/uninstall.js'
 
 program
   .name('golem')
   .description('generate urbit projects and test environments')
   .version('0.0.1')
+
+// Project Creation
 
 program.command('new')
   .description('create a new urbit project')
@@ -24,6 +29,27 @@ program.command('shell')
 program.command('build')
   .description('build the current urbit project to it\'s test environment')
   .action(build)
+
+// Package Management
+
+program.command('login')
+  .description('authenticate with NEAR to publish to the registry')
+  .action(publish)
+
+program.command('publish')
+  .description('publish a hoon file or folder as a package')
+  .argument('<path>', 'path to the package (under /desk)')
+  .action(publish)
+
+program.command('install')
+  .description('install a hoon package into your project')
+  .argument('<name>', 'name of the package to install, (e.g. @sampel-palnet/rudder)')
+  .action(install)
+
+program.command('uninstall')
+  .description('uninstall a hoon package from your project')
+  .argument('<name>', 'name of the package to uninstall, (e.g. @sampel-palnet/rudder)')
+  .action(uninstall)
 
 program.parse()
 
