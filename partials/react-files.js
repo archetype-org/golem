@@ -66,6 +66,7 @@ module.exports = {
   },
   "devDependencies": {
     "@urbit/vite-plugin-urbit": "^1.0.0",
+    "vite-plugin-rewrite-all": "1.0.1",
     "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
