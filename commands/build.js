@@ -19,7 +19,6 @@ async function build () {
     const clack = await Clack({ ship: `ships/${pier}` })
     await clack.commitDesk(urbitSafeDeskName)
     await clack.reviveDesk(urbitSafeDeskName)
-    await clack.close()
   } catch (err) {
     console.log(err)
     return err

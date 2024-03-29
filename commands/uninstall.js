@@ -15,11 +15,19 @@ async function removeDependency (name) {
   }
 }
 
-async function uninstall (name) {
+function parsePackageName (packageName) {
+  const isValidPackageName = pn => /^@.+\/.+/.test(pn)
+  if (!isValidPackageName) throw new Error(`Invalid Package Name: ${packageName}`)
+  const [accountId, name] = packageName.replace('@','').split('/')
+  return { accountId, name }
+}
+
+async function uninstall (packageName) {
+  const { name } = parsePackageName(packageName)
   try {
     await isInGolemProject()
     // todo: uninstall a package
-    console.log(`Uninstalling ${name}`)
+    console.log(`Uninstalling ${packageName}`)
     await removeDependency(name)
     console.log(`Removed ${name} from dependencies`)
   } catch (err) {

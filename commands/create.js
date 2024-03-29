@@ -1,4 +1,3 @@
-import { python } from 'pythonia'
 import { fileExists, createFile, createPath } from "../lib/files.js"
 import { installCoreDependencies } from '../lib/urbit.js'
 import { emptyDesk } from '../templates/empty-desk.js'
@@ -26,7 +25,6 @@ async function create (deskName, template, { skipDeps }) {
   if (!skipDeps) {
     await installCoreDependencies(depsPath)
   }
-  python.exit()
 }
 
 export {

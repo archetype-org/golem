@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import { program } from 'commander'
+import { closeClack } from '@archetype-org/clack'
+
 import { create }  from './commands/create.js'
 import { shell } from './commands/shell.js'
 import { build } from './commands/build.js'
@@ -39,6 +41,7 @@ program.command('login')
 program.command('publish')
   .description('publish a hoon file or folder as a package')
   .argument('<path>', 'path to the package (under /desk)')
+  .argument('<version>', 'vesrion number of the package, uses semver (major.minor.patch e.g. 1.0.2 etc) ')
   .action(publish)
 
 program.command('install')
@@ -51,7 +54,8 @@ program.command('uninstall')
   .argument('<name>', 'name of the package to uninstall, (e.g. @sampel-palnet/rudder)')
   .action(uninstall)
 
-program.parse()
+program.hook('postAction', () => closeClack());
 
+program.parse()
 
 

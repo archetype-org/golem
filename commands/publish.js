@@ -1,5 +1,5 @@
 import { basename, extname } from 'path'
-import { Registry } from '../../ribbit/dist/index.js'
+import { Registry } from '@archetype-org/ribbit'
 import { getAccount } from '../lib/accounts.js'
 import { getFileList } from '../lib/files.js'
 import {
@@ -9,23 +9,28 @@ import {
 
 const CONTRACT_ID = 'lamentable-hobbies.testnet'
 
-async function publish (path) {
+async function publish (path, version) {
   try {
   	await isInGolemProject()
   	await isValidLibraryPath(path)
   	const account = await getAccount()
+  	console.log(`Successfully logged into NEAR with ${account.accountId} . . .\n`)
+  	console.log(`Packaging ${path} . . .`)
   	const packageContent = packageLibrary(path)
-		// console.log(JSON.stringify(packageContent, null, 2))
-
+  	const packageName = `@${account.accountId}/${basename(path)}`
+  	console.log(`${path} packaged Successfully as ${packageName}!`)
+  	console.log(`Registering ${packageName} at the package registry and uploading . . .\n\n`)
 		const registry = await new Registry(account, CONTRACT_ID)
-		await registry.uploadAndCreateManifest(
+		await registry.uploadAndCreateManifestWithPinning(
 			basename(path),
-			// todo: track and bump version
-			'1.0.0',
-			'json',
+			version,
+			'urbit-library',
 			packageContent
 		)
-
+  	console.log(`\n\n${packageName} V${version} successfully registered!
+install it with:
+		golem install ${packageName}
+`)
   } catch (err) {
     console.log(err)
     return err
