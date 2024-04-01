@@ -1,4 +1,4 @@
-import execSh from "exec-sh"
+import execSh from 'exec-sh'
 const execShPromise = execSh.promise
 import { isInGolemProject } from '../lib/checks.js'
 import { basename } from 'path'

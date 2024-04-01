@@ -1,13 +1,13 @@
 import { basename, extname } from 'path'
 import { Registry } from '@archetype-org/ribbit'
 import { getAccount } from '../lib/accounts.js'
-import { getFileList } from '../lib/files.js'
+import { getFileList, packageLibrary } from '../lib/files.js'
+import { CONTRACT_ID } from '../lib/constants.js'
+
 import {
 	isInGolemProject,
 	isValidLibraryPath,
 } from '../lib/checks.js'
-
-const CONTRACT_ID = 'lamentable-hobbies.testnet'
 
 async function publish (path, version) {
   try {
@@ -35,28 +35,6 @@ install it with:
     console.log(err)
     return err
   }
-}
-
-function packageLibrary (path) {
-	// local checks & conditionals
-	const isContainedIn = (array, item) => new Set(array).has(item)
-	const isInSpecialFolder = (path) => isContainedIn(
-		['lib', 'mar', 'sur', 'ted', 'app'],
-		path.split('/')[0]
-	)
-	const isRoot = (path) => path[0] === '/'
-
-	// get files at path
-  const projectName = basename(process.cwd())
-	const libraryPath = isRoot(path) ? `./apps/${projectName}/desk${path}` :
-		isInSpecialFolder(path) ?  `./apps/${projectName}/desk/${path}` :
-			`./apps/${projectName}/desk/lib/${path}`
-	const files = getFileList(libraryPath) 
-	
-	return {
-		package: basename(libraryPath),
-		files, 
-	}
 }
 
 export {

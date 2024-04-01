@@ -1,4 +1,4 @@
-import { fileExists, createFile, createPath } from "../lib/files.js"
+import { fileExists, createFile, createPath } from '../lib/files.js'
 import { installCoreDependencies } from '../lib/urbit.js'
 import { emptyDesk } from '../templates/empty-desk.js'
 import { crudDesk } from '../templates/crud-desk.js'

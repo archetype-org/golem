@@ -54,7 +54,7 @@ program.command('uninstall')
   .argument('<name>', 'name of the package to uninstall, (e.g. @sampel-palnet/rudder)')
   .action(uninstall)
 
-program.hook('postAction', () => closeClack());
+program.hook('postAction', () => closeClack())
 
 program.parse()
 

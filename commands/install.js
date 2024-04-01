@@ -3,8 +3,8 @@ import { Registry } from '@archetype-org/ribbit'
 import { getAccount } from '../lib/accounts.js'
 import { isInGolemProject } from '../lib/checks.js'
 import { createFile } from '../lib/files.js'
+import { CONTRACT_ID } from '../lib/constants.js'
 
-const CONTRACT_ID = 'lamentable-hobbies.testnet'
 
 function parsePackageName (packageName) {
   const isValidPackageName = pn => /^@.+\/.+/.test(pn)
