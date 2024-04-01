@@ -34,6 +34,5 @@ function emptyDesk (shipName, deskName) {
   return { files }
 }
 
-export {
-  emptyDesk,
-}
+export default emptyDesk
+

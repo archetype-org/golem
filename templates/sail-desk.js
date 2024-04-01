@@ -13,6 +13,4 @@ function sailDesk (shipName, deskName) {
   return { files }
 }
 
-export {
-  sailDesk,
-}
+export default sailDesk
