@@ -26,7 +26,6 @@ async function uninstall (packageName) {
   const { name } = parsePackageName(packageName)
   try {
     await isInGolemProject()
-    // todo: uninstall a package
     console.log(`Uninstalling ${packageName}`)
     await removeDependency(name)
     console.log(`Removed ${name} from dependencies`)
