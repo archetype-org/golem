@@ -23,12 +23,11 @@ function parsePackageName (packageName) {
 }
 
 async function uninstall (packageName) {
-  const { name } = parsePackageName(packageName)
   try {
     await isInGolemProject()
     console.log(`Uninstalling ${packageName}`)
-    await removeDependency(name)
-    console.log(`Removed ${name} from dependencies`)
+    await removeDependency(packageName)
+    console.log(`Removed ${packageName} from dependencies`)
   } catch (err) {
     console.log(err)
     return err

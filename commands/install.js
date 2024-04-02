@@ -22,7 +22,7 @@ async function install (packageName) {
     const account = await getAccount()
     console.log(`Connecting to registry as ${account.accountId} . . .`)
     const registry = await new Registry(account, CONTRACT_ID)
-    const pkg = await registry.getLatestManifestDataFromGateway(accountId, packageName)
+    const pkg = await registry.getLatestManifestDataFromGateway(accountId, name)
     console.log(`${packageName} retrieved! writing files . . .`)
     for (let file of pkg.files ) {
       createFile(`./apps/${projectName}/desk-deps/${pkg.package}${file.path}`, file.content)

@@ -26,7 +26,7 @@ async function publish (path, version) {
   	console.log(`Registering ${packageName} at the package registry and uploading . . .\n\n`)
 		const registry = await new Registry(account, CONTRACT_ID)
 		await registry.uploadAndCreateManifestWithPinning(
-			packageContent.package,
+			basename(path),
 			version,
 			'urbit-library',
 			packageContent
