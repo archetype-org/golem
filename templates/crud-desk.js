@@ -13,6 +13,4 @@ function crudDesk (shipName, deskName) {
   return { files }
 }
 
-export {
-  crudDesk,
-}
+export default crudDesk

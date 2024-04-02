@@ -1,19 +1,10 @@
-import { python } from 'pythonia'
-import { fileExists, createFile, createPath } from "../lib/files.js"
+import { fileExists, createFile, createPath, getTemplates } from '../lib/files.js'
 import { installCoreDependencies } from '../lib/urbit.js'
-import { emptyDesk } from '../templates/empty-desk.js'
-import { crudDesk } from '../templates/crud-desk.js'
-import { sailDesk } from '../templates/sail-desk.js'
 
 async function create (deskName, template, { skipDeps }) {
   console.log(`create: creating urbit project`)
   console.log(`create: using template — ${template}`)
-  // todo: import dynamically from folder
-  const templates = {
-    "empty": emptyDesk,
-    "crud": crudDesk,
-    "sail": sailDesk,
-  }
+  const templates = await getTemplates()
   // app always distributed through fake ~zod, by convention
   const { files } = templates[template]('zod', deskName)
   for (let file of files) {
@@ -26,7 +17,6 @@ async function create (deskName, template, { skipDeps }) {
   if (!skipDeps) {
     await installCoreDependencies(depsPath)
   }
-  python.exit()
 }
 
 export {
