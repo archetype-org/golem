@@ -5,7 +5,7 @@ import { closeClack } from '@archetype-org/clack'
 
 import { create }  from './commands/create.js'
 import { shell } from './commands/shell.js'
-import { init } from './commands/init.js.js'
+import { init } from './commands/init.js'
 import { build } from './commands/build.js'
 import { publish } from './commands/publish.js'
 import { install } from './commands/install.js'
@@ -36,6 +36,7 @@ program.command('init')
 program.command('build')
   .description('build the current urbit project to it\'s test environment')
   .action(build)
+  .option('--ui-only', 'only build the UI, do not build the desk')
 
 // Package Management
 

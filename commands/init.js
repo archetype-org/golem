@@ -1,9 +1,7 @@
 import fs from 'fs'
-import { Clack } from '@archetype-org/clack'
-import { copyDeskToUrbit }  from '../lib/files.js'
 import { isInGolemProject, isUrbitInstalled, isShipCreated, isDeskMountedOnShip } from '../lib/checks.js'
 
-async function build () {
+async function init () {
   try {
     await isInGolemProject()
 
@@ -22,5 +20,5 @@ async function build () {
 }
 
 export {
-  build,
+  init,
 }
