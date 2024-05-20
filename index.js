@@ -11,6 +11,7 @@ import { publish } from './commands/publish.js'
 import { search } from './commands/search.js'
 import { install } from './commands/install.js'
 import { uninstall } from './commands/uninstall.js'
+import { kill } from './commands/kill.js'
 
 program
   .name('golem')
@@ -65,6 +66,10 @@ program.command('uninstall')
   .description('uninstall a hoon package from your project')
   .argument('<name>', 'name of the package to uninstall, (e.g. @sampel-palnet/rudder)')
   .action(uninstall)
+
+program.command('kill')
+  .description('find and kill the urbit process of any running golem project')
+  .action(kill)
 
 program.hook('postAction', () => closeClack())
 
