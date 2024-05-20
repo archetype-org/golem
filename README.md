@@ -4,9 +4,27 @@ Golem is a JavaScript CLI-Tool for creating, testing, and deploying Urbit apps, 
 
 Rather than building additional tools for Urbit, Golem is the mud and the piping — providing a minimally opinionated full-stack framework for combining the existing tools for Urbit development as well as integrating new ones. 
 
-## About
+### Contents
 
-### Project Structure
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Publishing](#publishing-namespace)
+- [Reference & Usage](#reference--usage)
+  - [Project Creation](#project-creation)
+    - [Create](#create)
+		- [Basic](#basic)
+    	- [Templates](#create-from-template)
+	- [Build & Run](#build--serve)
+	- [Dojo Access](#dojo-access)
+	- [Shutdown](#shutdown-fake-ships)
+  - [Package Management](#package-management)
+    - [Install Packages](#install-packages)
+    - [Uninstall Packages](#uninstall-packages)
+    - [Publish Packages](#publish-packages)
+    - [Search Packages](#search-packages)
+
+#### Project Structure
 
 ```
 /<my-project>
@@ -27,12 +45,20 @@ Rather than building additional tools for Urbit, Golem is the mud and the piping
 
 ```
 
-## Getting Started & Setup
+# Getting Started
+
+### Installation
 
 `golem`, is a CLI, install golem globally via `npm` or `yarn`:
 ```
 npm install -g @archetype-org/golem
 ```
+
+### Publishing Namespace
+
+Once installed you can begin creating projects and installing packages from the registry. 
+
+To publish a package, you will need to have a NEAR account and some NEAR in it for gas. (See [here](#publish-packages) for more information.)
 
 # Reference & Usage
 
@@ -102,7 +128,7 @@ golem build
 
 Once this is run, you can find your desk installed in a test ship at `http://localhost`, the UI will still need to be globbed for it to show up, but you can confirm the desk installation by visiting `http://localhost/docket/upload` and finding it in the dropdown. Use the form on that page to upload the contents of the `/<my-project>/ui` folder and you should be able to test it.
 
-### Dojo Shell Access
+### Dojo Access
 
 If you need it, you can access the shell for your test env at any time with:
 
@@ -110,7 +136,7 @@ If you need it, you can access the shell for your test env at any time with:
 golem shell
 ```
 
-### Shut Down Fake Ships
+### Shutdown Fake Ships
 
 golem runs your test ships in the background. You can stop a running urbit ship by running:
 ```
@@ -121,7 +147,7 @@ This will search for a running urbit ship and kill it. This will kill the ship r
 
 ## Package Management 
 
-### Install Dependancies
+### Install Packages
 
 To install a package from the registry, you can use the `install` command like so:
 
@@ -130,6 +156,14 @@ golem install @<publisher-name>/<package-name>
 ```
 
 The publisher name is the NEAR account name of the person or organization that published the package.
+
+### Uninstall Packages
+
+To uninstall a package, you can use the `uninstall` command like so:
+
+```
+golem uninstall @<publisher-name>/<package-name>
+```
 
 ### Publish Packages
 
