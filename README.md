@@ -6,11 +6,6 @@ Rather than building additional tools for Urbit, Golem is the mud and the piping
 
 ## About
 
-### Included Tools
-
-* Developer Pill
-* Docs
-
 ### Project Structure
 
 ```
@@ -39,9 +34,11 @@ Rather than building additional tools for Urbit, Golem is the mud and the piping
 npm install -g @archetype-org/golem
 ```
 
-## Reference & Usage
+# Reference & Usage
 
-### Create and Initialize
+## Create and Run a Project 
+
+### Create
 
 You can create a blank app by default or build one from template with the commands below:
 
@@ -61,7 +58,8 @@ To instead create a project from a specific template you can supply the template
 golem new <my-project> <template-name>
 ```
 
-> **NOTE:** For expediency, the create command does not initialize your test ship for the project. Once you have a project, you can initialize it with:
+**NOTE:** For expediency, the create command does not initialize your test ship for the project. Once you have a project, you can initialize it with:
+
 ```
 cd <my-project>
 golem init
@@ -69,11 +67,13 @@ golem init
 
 This should take a few minutes to run.
 
-##### Some Available Templates:
+#### Some Available Templates:
 
 Here are a couple templates available in the CLI and example commands
 
-CRUD (DB) Template — this template provides a sur, lib, and mar files for one datatype and uses them in the `on-poke` and `on-peek` arms of the agent. The setup is meant to be easily extensible either by adding properties or additional data types. 
+##### CRUD (DB) Template
+
+This template provides a sur, lib, and mar files for one datatype and uses them in the `on-poke` and `on-peek` arms of the agent. The setup is meant to be easily extensible either by adding properties or additional data types. 
 
 ```
 golem new <my-project> crud
@@ -81,7 +81,9 @@ cd <my-project>
 golem init
 ```
 
-Sail (CRM) Template — this template includes all the piping in the CRUD template as well as an opinionated setup for serving Sail UI from the same agent, inlcuding separation of UI components into files.
+##### Sail (CRM) Template
+
+This template includes all the piping in the CRUD template as well as an opinionated setup for serving Sail UI from the same agent, inlcuding separation of UI components into files.
 
 ```
 golem new <my-project> sail
@@ -107,6 +109,17 @@ If you need it, you can access the shell for your test env at any time with:
 ```
 golem shell
 ```
+
+### Shut Down Fake Ships
+
+golem runs your test ships in the background. You can stop a running urbit ship by running:
+```
+golem kill
+```
+
+This will search for a running urbit ship and kill it. This will kill the ship regardless of if it is a golem project or another fakeship you have running.
+
+## Package Management 
 
 ### Install Dependancies
 
@@ -145,12 +158,3 @@ golem search @<publisher-name>/<package-name>
 ```
 
 the search command in the CLI can't not perform fuzzy matching by default, since the registry contract is decentralized, it is includeded to allow for easy verification of a package's existence without installing it.
-
-### Shut Down Fake Ships
-
-golem runs your test ships in the background. You can stop a running urbit ship by running:
-```
-golem kill
-```
-
-This will search for a running urbit ship and kill it. This will kill the ship regardless of if it is a golem project or another fakeship you have running.
