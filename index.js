@@ -5,6 +5,7 @@ import { closeClack } from '@archetype-org/clack'
 
 import { create }  from './commands/create.js'
 import { shell } from './commands/shell.js'
+import { init } from './commands/init.js.js'
 import { build } from './commands/build.js'
 import { publish } from './commands/publish.js'
 import { install } from './commands/install.js'
@@ -27,6 +28,10 @@ program.command('new')
 program.command('shell')
   .description('open dojo for your current project')
   .action(shell)
+
+program.command('init')
+  .description('initialize a test ship for the project')
+  .action(init)
 
 program.command('build')
   .description('build the current urbit project to it\'s test environment')
