@@ -36,7 +36,7 @@ npm install -g @archetype-org/golem
 
 # Reference & Usage
 
-## Create and Run a Project 
+## Project Creation 
 
 ### Create
 
