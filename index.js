@@ -8,6 +8,7 @@ import { shell } from './commands/shell.js'
 import { init } from './commands/init.js'
 import { build } from './commands/build.js'
 import { publish } from './commands/publish.js'
+import { search } from './commands/search.js'
 import { install } from './commands/install.js'
 import { uninstall } from './commands/uninstall.js'
 
@@ -49,6 +50,11 @@ program.command('publish')
   .argument('<path>', 'path to the package (under /desk)')
   .argument('<version>', 'vesrion number of the package, uses semver (major.minor.patch e.g. 1.0.2 etc) ')
   .action(publish)
+
+program.command('search')
+  .description('search the registry for a hoon package')
+  .argument('<name>', 'name of the package to search for, (e.g. @sampel-palnet/rudder)')
+  .action(search)
 
 program.command('install')
   .description('install a hoon package into your project')

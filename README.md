@@ -136,4 +136,13 @@ golem publish <package-name> <semantic-version>
 
 The package name must match a folder or path in your project, and the semantic version must be a valid semantic version. By default, golem will look for the specified folder or file in the `/lib` folder, but if you specify `/app`, `/sur`, or `/mar`, in the prefix of your path, it will look in the root of that folder instead. Any valid hoon file or folder of hoon files is a valid package.
 
+### Search Packages
+
+You can search the registry for a package to verify that it exists by running:
+
+```
+golem search @<publisher-name>/<package-name>
+```
+
+the search command in the CLI can't not perform fuzzy matching by default, since the registry contract is decentralized, it is includeded to allow for easy verification of a package's existence without installing it.
 
