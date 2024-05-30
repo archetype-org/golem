@@ -17,5 +17,11 @@
     "@archetype-org/ribbit": "^0.2.0",
     "commander": "^11.0.0",
     "exec-sh": "^0.4.0"
+  },
+  "overrides": {
+    "@archetype-org/ribbit": {
+      "@near-js/accounts": "1.0.4"
+    }
   }
+
 }
