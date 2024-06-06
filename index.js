@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+import fs from 'fs'
+import { fileURLToPath } from 'url';
+import { join, dirname } from 'path'
+
 import { program } from 'commander'
 import { closeClack } from '@archetype-org/clack'
 
@@ -12,6 +16,9 @@ import { search } from './commands/search.js'
 import { install } from './commands/install.js'
 import { uninstall } from './commands/uninstall.js'
 import { kill } from './commands/kill.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 program
   .name('golem')
@@ -71,8 +78,14 @@ program.command('kill')
   .description('find and kill the urbit process of any running golem project')
   .action(kill)
 
+program.command('version')
+  .description('output the version of this package')
+  .action(() => {
+    const packageJsonPath = join(__dirname, 'package.json');
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    console.log(packageJson.version);
+  });
+
 program.hook('postAction', () => closeClack())
 
 program.parse()
-
-
