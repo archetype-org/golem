@@ -37,10 +37,11 @@ program.command('new')
 
 program.command('shell')
   .description('open dojo for your current project')
+  .argument('[shipName]', 'name of the ship whose dojo to connect to', 'zod')
   .action(shell)
 
 program.command('init')
-  .description('initialize a test ship for the project')
+  .description('initialize test ships for the project')
   .action(init)
 
 program.command('build')

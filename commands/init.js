@@ -6,15 +6,27 @@ async function init () {
     await isInGolemProject()
 
     const { ships } = JSON.parse(fs.readFileSync('./ships/ships.json'))
-    const { pier, desks } = ships[0] // only supports zod for now
 
     await isUrbitInstalled()
-    await isShipCreated(pier)
-    await isDeskMountedOnShip(desks[0], pier)
-    console.log(`Initialized fakeship for ${desks[0]}`)
+
+    for (const ship of ships) {
+      const { pier, desks } = ship
+
+      console.log(`INIT: Creating ship for ${pier}...`)
+      await isShipCreated(pier)
+      console.log(`INIT: ${pier} created.`)
+
+      for (const desk of desks) {
+        console.log(`INIT: Mounting ${desk} on ${pier}...`)
+        await isDeskMountedOnShip(desk, pier)
+        console.log(`INIT: Successfully mounted desk: ${desk} on pier: ${pier}.`)
+      }
+    }
+
+    console.log(`INIT: The fakeships: ${ships.map(ship => ship.pier).join(', ')} have been initialized with ${ships.flatMap(ship => ship.desks).join(', ')}`)
 
   } catch (err) {
-    console.log(err)
+    console.error('INIT: An error occurred while attempting to create the fakeships:', err)
     return err
   }
 }

@@ -9,27 +9,35 @@ async function build ({ uiOnly, connect }) {
     await isInGolemProject()
 
     const { ships } = JSON.parse(fs.readFileSync('./ships/ships.json'))
-    const { pier, desks } = ships[0] // only supports zod for now
-
-    const deskName = desks[0]
 
     if (!uiOnly) {
       await isUrbitInstalled()
-      await isShipCreated(pier, { connect })
-      await isDeskMountedOnShip(deskName, pier)
 
-      console.log('BUILD: building desk to urbit ship')
-      await copyDeskToUrbit(deskName, pier)
-      const urbitSafeDeskName = `%${deskName}`
-      const clack = await Clack({ ship: `ships/${pier}` })
-      await clack.commitDesk(urbitSafeDeskName)
-      await clack.reviveDesk(urbitSafeDeskName)
+      for (const ship of ships) {
+        const { pier, desks } = ship
+
+        await isShipCreated(pier, { connect })
+
+        for (const desk of desks) {
+          await isDeskMountedOnShip(desk, pier)
+
+          console.log(`BUILD: building desk ${desk} to urbit ship ${pier}`)
+          await copyDeskToUrbit(desk, pier)
+          const urbitSafeDeskName = `%${desk}`
+          const clack = await Clack({ ship: `ships/${pier}` })
+          await clack.commitDesk(urbitSafeDeskName)
+          await clack.reviveDesk(urbitSafeDeskName)
+        }
+      }
     } else {
       console.log('BUILD: skipping desk build to urbit ship, because --ui-only flag was set') 
     }
-    
-    console.log('BUILD: building UI')
-    await buildUI(deskName)
+
+    const uniqueDesks = new Set(ships.flatMap(ship => ship.desks))
+    for (const desk of uniqueDesks) {
+      console.log(`BUILD: building UI for ${desk}`)
+      await buildUI(desk)
+    }
     
   } catch (err) {
     console.log(err)
