@@ -4,7 +4,7 @@ import { copyDeskToUrbit }  from '../lib/files.js'
 import { isInGolemProject, isUrbitInstalled, isShipCreated, isDeskMountedOnShip } from '../lib/checks.js'
 import { buildUI } from '../lib/react.js'
 
-async function build ({ uiOnly }) {
+async function build ({ uiOnly, connect }) {
   try {
     await isInGolemProject()
 
@@ -15,7 +15,7 @@ async function build ({ uiOnly }) {
 
     if (!uiOnly) {
       await isUrbitInstalled()
-      await isShipCreated(pier)
+      await isShipCreated(pier, { connect })
       await isDeskMountedOnShip(deskName, pier)
 
       console.log('BUILD: building desk to urbit ship')
@@ -25,7 +25,7 @@ async function build ({ uiOnly }) {
       await clack.commitDesk(urbitSafeDeskName)
       await clack.reviveDesk(urbitSafeDeskName)
     } else {
-     console.log('BUILD: skipping desk build to urbit ship, because --ui-only flag set to true') 
+      console.log('BUILD: skipping desk build to urbit ship, because --ui-only flag was set') 
     }
     
     console.log('BUILD: building UI')

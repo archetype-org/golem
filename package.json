@@ -4,7 +4,7 @@
   "bin": {
     "golem": "./index.js"
   },
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Project creation and package management CLI for Urbit",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,9 @@
   "dependencies": {
     "@archetype-org/clack": "^0.2.0",
     "@archetype-org/ribbit": "^0.2.0",
+    "@near-js/accounts": "1.0.4",
+    "chokidar": "^3.6.0",
     "commander": "^11.0.0",
-    "exec-sh": "^0.4.0",
-    "@near-js/accounts": "1.0.4"
+    "exec-sh": "^0.4.0"
   }
 }

@@ -3,6 +3,7 @@
 import fs from 'fs'
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path'
+import chokidar from 'chokidar';
 
 import { program } from 'commander'
 import { closeClack } from '@archetype-org/clack'
@@ -46,6 +47,31 @@ program.command('build')
   .description('build the current urbit project to it\'s test environment')
   .action(build)
   .option('--ui-only', 'only build the UI, do not build the desk')
+  .option('--connect', 'attempt to connect to a running ship, instead of starting a new one')
+
+program.command('watch')
+  .description('watch the current project files and run the build command on changes')
+  .action(() => {
+    const watcher = chokidar.watch('./apps', {
+      ignored: /node_modules|\.git|dist/,
+      persistent: true
+    });
+
+    watcher.on('change', async (path) => {
+      console.log(`File ${path} has been changed. Rebuilding...`);
+      await build({ connect: true });
+      console.log('Build complete.');
+      console.log('Watching for changes...')
+    });
+
+    watcher.on('close', () => {
+      console.log('Watcher has been closed.');
+      // need to close manually because the postaction hook doesn't run for persistent commands
+      closeClack();
+    });
+
+    console.log('Watching for file changes...');
+  });
 
 // Package Management
 
@@ -86,6 +112,13 @@ program.command('version')
     console.log(packageJson.version);
   });
 
-program.hook('postAction', () => closeClack())
+const persistentCommands = ['watch'];
+
+program.hook('postAction', () => {
+  const currentCommand = process.argv[2];
+  if (!persistentCommands.includes(currentCommand)) {
+    closeClack();
+  }
+});
 
 program.parse()
