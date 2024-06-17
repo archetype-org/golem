@@ -8,7 +8,7 @@ async function build ({ uiOnly, connect }) {
   try {
     await isInGolemProject()
 
-    const { ships } = JSON.parse(fs.readFileSync('./ships/ships.json'))
+    const { ships } = JSON.parse(fs.readFileSync('./ships.json'))
 
     if (!uiOnly) {
       await isUrbitInstalled()

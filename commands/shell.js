@@ -6,7 +6,7 @@ async function shell (shipName) {
     await isInGolemProject()
     await isUrbitInstalled()
 
-    const { ships } = JSON.parse(fs.readFileSync('./ships/ships.json'))
+    const { ships } = JSON.parse(fs.readFileSync('./ships.json'))
 
     const ship = shipName 
       ? ships.find(s => s.pier === shipName) 
