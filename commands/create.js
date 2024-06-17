@@ -11,10 +11,14 @@ async function create (deskName, template, { skipDeps }) {
     file.path = file.path.replace('./', '')
     if (!(await fileExists(file))) await createFile(`./${deskName}/${file.path}/${file.name}`, file.content.trimStart())
   }
-  // download code dependancues (incl. base, garden etc)
-  const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
-  await createPath(depsPath)
+
+  const shipsPath = `./ships`
+  await createPath(shipsPath)
+  
   if (!skipDeps) {
+    // download code dependancues (incl. base, garden etc)
+    const depsPath = `./${deskName}/apps/${deskName}/desk-deps`
+    await createPath(depsPath)
     await installCoreDependencies(depsPath)
   }
 }
