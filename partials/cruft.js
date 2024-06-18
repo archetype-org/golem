@@ -34,6 +34,10 @@ function cruft (shipName, deskName) {
         ]
       }, null, 2)
     }, {
+      path: 'ships',
+      name: '.keep',
+      content: ''
+    }, {
       path: '.',
       name: '.gitignore',
       content: `.node_modules
