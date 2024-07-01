@@ -4,7 +4,7 @@
   "bin": {
     "golem": "./index.js"
   },
-  "version": "1.6.1-next.1",
+  "version": "1.6.1-next.2",
   "description": "Project creation and package management CLI for Urbit",
   "main": "index.js",
   "scripts": {

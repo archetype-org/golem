@@ -3,7 +3,7 @@ function cruft (shipName, deskName) {
     {
       path: `apps/${deskName}/desk`,
       name: "sys.kelvin",
-      content: `[%zuse 412]`
+      content: `[%zuse 411]`
     }, {
       path: `apps/${deskName}/desk`,
       name: "desk.docket-0",
