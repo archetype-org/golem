@@ -1,7 +1,10 @@
 import { fileExists, createFile, createPath, getTemplates } from '../lib/files.js'
 import { installCoreDependencies, installShrubDependencies } from '../lib/urbit.js'
 
-async function create (deskName, template, { skipDeps, useShrub }) {
+async function create (deskName, template, { skipDeps }) {
+
+  const useShrub = template === 'shrub'
+  
   console.log(`create: creating urbit project`)
   console.log(`create: using template — ${template}`)
   const templates = await getTemplates()

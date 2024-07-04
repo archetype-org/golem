@@ -1,8 +1,10 @@
-import { shrubCruft } from '../partials/shrub.js'
+import { cruft } from '../partials/cruft.js'
+import { shrubFiles } from '../partials/shrub-files.js'
 
 function shrubDesk (shipName, deskName) {
   const files = [
-    ...shrubCruft(shipName, deskName),
+    ...cruft(shipName, deskName),
+    ...shrubFiles(shipName, deskName),
   ]
   return { files }
 }
