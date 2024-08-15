@@ -84,7 +84,7 @@ module.exports = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${deskName}}</title>
+    <title>${deskName}</title>
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/src/assets/favicon.svg" sizes="any" type="image/svg+xml" />
     <link rel="mask-icon" href="/src/assets/safari-pinned-tab.svg" color="#000000" />

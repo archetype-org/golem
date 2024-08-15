@@ -3,7 +3,7 @@ function cruft (shipName, deskName) {
     {
       path: `apps/${deskName}/desk`,
       name: "sys.kelvin",
-      content: `[%zuse 412]`
+      content: `[%zuse 411]`
     }, {
       path: `apps/${deskName}/desk`,
       name: "desk.docket-0",
@@ -23,7 +23,7 @@ function cruft (shipName, deskName) {
       content: `:~  %${deskName}
 ==`
     }, {
-      path: 'ships',
+      path: '.',
       name: 'ships.json',
       content: JSON.stringify({
         ships: [
@@ -33,6 +33,25 @@ function cruft (shipName, deskName) {
           }
         ]
       }, null, 2)
+    }, {
+      path: 'ships',
+      name: '.keep',
+      content: ''
+    }, {
+      path: '.',
+      name: '.gitignore',
+      content: `.node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+stats.html
+.eslintcache
+.vercel
+ships
+./ships/urbit
+desk-deps        
+      `
     },
   ]
   return files
